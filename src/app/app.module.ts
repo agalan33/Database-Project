@@ -5,13 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MessageComponent } from './message/message.component';
 import { MaterialComponentsModule } from './material-components/material-components.module';
-import { ChatComponent } from './chat/chat.component'
+import { ChatComponent } from './chat/chat.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     MessageComponent,
-    ChatComponent
+    ChatComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
