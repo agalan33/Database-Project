@@ -1,9 +1,9 @@
 <mat-card class="example-card">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
+    <img mat-card-avatar src="https://static.thenounproject.com/png/363633-200.png">
     <mat-card-title>{{message.userName}}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <img mat-card-image src="{{message.imgUrl}}" alt="Message photo">
   <mat-card-content>
     <p>
       {{message.message}}
