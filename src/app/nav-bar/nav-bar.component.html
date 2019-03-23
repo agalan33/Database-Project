@@ -1,0 +1,15 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+            <button mat-button [matMenuTriggerFor]="menu"
+            #matMenuTrigger="matMenuTrigger"
+            ><i class="material-icons">menu</i></button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item routerLink="/chat">My Chats</button>
+            </mat-menu>
+            <span>Fake Instagram</span>
+        </mat-toolbar-row>
+
+</mat-toolbar>
