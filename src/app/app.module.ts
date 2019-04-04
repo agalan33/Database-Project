@@ -5,21 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MessageComponent } from './message/message.component';
 import { MaterialComponentsModule } from './material-components/material-components.module';
-import { ChatComponent } from './chat/chat.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material'
-
+import {MatNativeDateModule} from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ContactListComponent } from './contact-list/contact-list.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
     MessageComponent,
-    ChatComponent,
     NavBarComponent,
     LoginComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    ContactListComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +28,9 @@ import {MatNativeDateModule} from '@angular/material'
     BrowserAnimationsModule,
     MaterialComponentsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    FlexLayoutModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
