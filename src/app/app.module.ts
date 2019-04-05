@@ -13,6 +13,7 @@ import {MatNativeDateModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     NavBarComponent,
     LoginComponent,
     CreateAccountComponent,
-    ContactListComponent
+    ContactListComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
