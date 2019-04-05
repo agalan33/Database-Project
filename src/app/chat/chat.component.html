@@ -1,3 +1,7 @@
 <div class="container" fxLayout="column" fxLayoutGap="20px">
-  <app-message *ngFor="let message of messages" [message]="message"></app-message>
+  <app-message *ngFor="let message of messages" [message]="message" fxLayoutAlign="center"></app-message>
+  <mat-form-field class="msg-text-box">
+    <textarea matInput placeholder="Write a message..."></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary">Send</button>
 </div>

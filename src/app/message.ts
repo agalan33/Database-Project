@@ -1,8 +1,10 @@
-export class Message {
-  id: number;
-  userName: string;
-  imgUrl: string;
-  message: string;
+export interface Message {
+  mid: number;
+  ufirst_name: string;
+  ulast_name: string;
+  mimage: string;
+  mtext: string;
   likes: number;
   dislikes: number;
+  date: string;
 }

@@ -1,17 +1,16 @@
-<mat-card class="example-card" fxFlex="60%" fxFlex.lt-md="50%" fxFlex.lt-sm="100%">
+<mat-card class="example-card" fxFlex="60%" fxFlex.lt-md="50%" fxFlex.lt-sm="100%" routerLink="/chat/messages/{{message.mid}}">
   <mat-card-header>
     <img mat-card-avatar src="https://static.thenounproject.com/png/363633-200.png">
-    <mat-card-title>{{message.userName}}</mat-card-title>
+    <mat-card-title>{{message.ufirst_name}} {{message.ulast_name}}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image src="{{message.imgUrl}}" alt="Message photo">
+  <img mat-card-image src={{message.mimage}} alt="Message photo">
   <mat-card-content>
     <p>
-      {{message.message}}
+      {{message.mtext}}
     </p>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button>LIKE {{message.likes}}</button>
     <button mat-button>DISLIKE {{message.dislikes}}</button>
   </mat-card-actions>
-  <a routerLink="/chat/messages/{{message.id}}">LINK</a>
 </mat-card>

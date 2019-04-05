@@ -8,7 +8,7 @@ import { MessageService } from '../message.service';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
-  private messages: Message[];
+  private messages: Message[] = [];
 
   constructor(private msgService: MessageService) { }
 
@@ -18,7 +18,9 @@ export class ChatComponent implements OnInit {
 
   getMessages() {
     this.msgService.getMessages().subscribe(
-      messages => this.messages = messages
+      (data: Message[]) =>
+        {data.map(item => this.messages.push(item));
+        console.log(this.messages);}
     );
   }
 
