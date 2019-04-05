@@ -12,6 +12,8 @@ import { MessageService } from '../message.service';
 export class MessageDetailComponent implements OnInit {
   private message: Message;
   private replies: Message[];
+  private likes: any[];
+  private dislikes: any[];
 
   constructor(
     private route: ActivatedRoute,

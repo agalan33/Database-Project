@@ -1,9 +1,9 @@
-<mat-card class="example-card" fxFlex="60%" fxFlex.lt-md="50%" fxFlex.lt-sm="100%">
+<mat-card class="example-card" fxFlex="60%">
   <mat-card-header>
     <img mat-card-avatar src="https://static.thenounproject.com/png/363633-200.png">
-    <mat-card-title>{{message.userName}}</mat-card-title>
+    <mat-card-title>{{message.ufirst_name}} {{message.ulast_name}}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image src="{{message.imgUrl}}" alt="Message photo">
+  <img mat-card-image src="{{message.mimage}}" alt="Message photo">
   <mat-card-content>
     <p>
       {{message.message}}
@@ -14,3 +14,16 @@
     <button mat-button>DISLIKE {{message.dislikes}}</button>
   </mat-card-actions>
 </mat-card>
+<mat-tab-group fxFlex="40%">
+  <mat-tab label="Replies">
+    <app-replies [replies]="replies"></app-replies>
+  </mat-tab>
+  <mat-tab label="Likes {{message.likes}}">
+    <mat-list role="list" *ngFor="let like of likes">
+      <mat-list-item role="listitem">{{like.userName}}</mat-list-item>
+    </mat-list>
+  </mat-tab>
+  <mat-tab label="Dislikes {{message.dislikes}}">
+
+  </mat-tab>
+</mat-tab-group>
