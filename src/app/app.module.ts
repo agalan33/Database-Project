@@ -9,6 +9,8 @@ import { ChatComponent } from './chat/chat.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MessageDetailComponent } from './message-detail/message-detail.component';
+import { RepliesComponent } from './replies/replies.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,14 +18,16 @@ import { MessageDetailComponent } from './message-detail/message-detail.componen
     MessageComponent,
     ChatComponent,
     NavBarComponent,
-    MessageDetailComponent
+    MessageDetailComponent,
+    RepliesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialComponentsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
