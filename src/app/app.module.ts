@@ -14,6 +14,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { AddContactComponent } from './add-contact/add-contact.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,8 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     CreateAccountComponent,
     ContactListComponent,
-    HomeComponent
+    HomeComponent,
+    AddContactComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,9 @@ import { HomeComponent } from './home/home.component';
     MatNativeDateModule,
     FlexLayoutModule,
     HttpClientModule,
+  ],
+  entryComponents: [
+    AddContactComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
