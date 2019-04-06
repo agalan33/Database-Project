@@ -6,5 +6,5 @@ export interface Message {
   mtext: string;
   likes: number;
   dislikes: number;
-  date: string;
+  mdate: string;
 }

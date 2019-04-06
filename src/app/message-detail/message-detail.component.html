@@ -6,24 +6,24 @@
   <img mat-card-image src="{{message.mimage}}" alt="Message photo">
   <mat-card-content>
     <p>
-      {{message.message}}
+      {{message.mtext}}
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>LIKE {{message.likes}}</button>
-    <button mat-button>DISLIKE {{message.dislikes}}</button>
+    <button mat-button>LIKE</button>
+    <button mat-button>DISLIKE</button>
   </mat-card-actions>
 </mat-card>
 <mat-tab-group fxFlex="40%">
   <mat-tab label="Replies">
     <app-replies [replies]="replies"></app-replies>
   </mat-tab>
-  <mat-tab label="Likes {{message.likes}}">
+  <mat-tab label="Likes">
     <mat-list role="list" *ngFor="let like of likes">
       <mat-list-item role="listitem">{{like.userName}}</mat-list-item>
     </mat-list>
   </mat-tab>
-  <mat-tab label="Dislikes {{message.dislikes}}">
+  <mat-tab label="Dislikes">
 
   </mat-tab>
 </mat-tab-group>

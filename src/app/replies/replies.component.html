@@ -1,9 +1,9 @@
 <mat-card class="reply-card" *ngFor="let reply of replies">
   <mat-card-header>
-    <mat-card-title>{{reply.userName}}</mat-card-title>
+    <mat-card-title>{{reply.ufirst_name}} {{reply.ulast_name}}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    {{reply.message}}
+    {{reply.mtext}}
   </mat-card-content>
-  <mat-card-footer>Posted on {{reply.date}}</mat-card-footer>
+  <mat-card-footer>Posted on {{reply.mdate}}</mat-card-footer>
 </mat-card>
