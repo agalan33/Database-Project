@@ -17,11 +17,11 @@ export class MessageService {
   }
 
   getMessage(id: number): Observable<Message> {
-    return of(MESSAGES.find(element => element.mid === id));
+    return this.http.get<Message>('DbProject/users/1/chats/1/messages/'+id);
   }
 
   getReplies(id: number): Observable<Message[]> {
-    return of(MESSAGES);
+    return this.http.get<Message[]>('DbProject/users/1/chats/1/messages/'+id+'/replies');
   }
 
   //WIP
