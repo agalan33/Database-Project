@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Message } from '../message';
 import { MessageService } from '../message.service';
+import { take, first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-message-detail',
@@ -22,14 +23,15 @@ export class MessageDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.route.data
+      .subscribe((data: {message: Message}) => {
+        this.message = data.message;
+      });
     this.getMessageAndReplies();
   }
 
   getMessageAndReplies(): void {
     const id = +this.route.snapshot.paramMap.get('mid');
-    this.msgService.getMessage(id).subscribe(
-      msg => this.message = msg
-    );
     this.msgService.getReplies(id).subscribe(
       replies => this.replies = replies
     )
