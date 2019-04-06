@@ -13,4 +13,9 @@
     <button mat-button>LIKE {{message.likes}}</button>
     <button mat-button>DISLIKE {{message.dislikes}}</button>
   </mat-card-actions>
+  <mat-card-footer>
+    <p fxLayoutAlign="end">
+      {{message.mdate | date: 'mediumDate'}} {{message.mdate | date: 'shortTime'}}
+    </p>
+  </mat-card-footer>
 </mat-card>

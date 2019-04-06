@@ -13,6 +13,11 @@
     <button mat-button>LIKE</button>
     <button mat-button>DISLIKE</button>
   </mat-card-actions>
+  <mat-card-footer>
+    <p fxLayoutAlign="end">
+      {{message.mdate | date: 'mediumDate'}} {{message.mdate | date: 'shortTime'}}
+    </p>
+  </mat-card-footer>
 </mat-card>
 <mat-tab-group fxFlex="40%">
   <mat-tab label="Replies">
