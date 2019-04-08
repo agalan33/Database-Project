@@ -28,13 +28,17 @@
   </mat-tab>
 </mat-tab-group>
   <mat-table [dataSource]='contacts' *ngIf="contacts.length != 0">
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+      <mat-cell *matCellDef="let contact"> {{contact.username}} </mat-cell>
+    </ng-container>
     <ng-container matColumnDef="ufirst_name">
       <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
-      <mat-cell id="result cell title" *matCellDef="let contact"> {{contact.ufirst_name}} </mat-cell>
+      <mat-cell *matCellDef="let contact"> {{contact.ufirst_name}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="ulast_name">
       <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
-      <mat-cell id="result cell artist" *matCellDef="let contact"> {{contact.ulast_name}} </mat-cell>
+      <mat-cell *matCellDef="let contact"> {{contact.ulast_name}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="uphone">
       <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>

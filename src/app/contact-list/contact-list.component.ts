@@ -12,7 +12,7 @@ import {AddContactComponent} from '../add-contact/add-contact.component';
 export class ContactListComponent implements OnInit {
   public contacts = [];
   public filtered = [];
-  public headers = ['ufirst_name', 'ulast_name', 'uphone', 'uemail'];
+  public headers = ['username', 'ufirst_name', 'ulast_name', 'uphone', 'uemail'];
   private contactsURL = 'http://127.0.0.1:5000/DbProject/users/1/contacts';
   private favoritesURL = 'http://127.0.0.1:5000/DbProject/users/1/contacts/favorites';
 
@@ -28,6 +28,7 @@ export class ContactListComponent implements OnInit {
     this.httpClient.get<Contact[]>(this.contactsURL).subscribe(data => {
       this.contacts = data;
       this.filtered = data;
+      console.log(data);
     });
   }
   clearSearch() {
