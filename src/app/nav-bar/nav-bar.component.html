@@ -2,14 +2,16 @@
       rel="stylesheet">
 
 <mat-toolbar color="primary">
-  <mat-toolbar-row>
+  <mat-toolbar-row >
             <button mat-button [matMenuTriggerFor]="menu"
             #matMenuTrigger="matMenuTrigger"
             ><i class="material-icons">menu</i></button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item routerLink="/chat">My Chats</button>
+              <button mat-menu-item routerLink="/">Home</button>
+              <button mat-menu-item routerLink="/contact-list">My Contacts</button>
             </mat-menu>
-            <span>Fake Instagram</span>
-        </mat-toolbar-row>
-
+            <span>Grinder</span>
+            <span class="fill-space"></span>
+            <button mat-button routerLink="/login"><i class="material-icons">supervised_user_circle</i></button>
+  </mat-toolbar-row>
 </mat-toolbar>

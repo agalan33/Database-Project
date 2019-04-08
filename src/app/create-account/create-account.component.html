@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-title fxLayoutAlign="center">Create Account</mat-card-title>
+  <mat-form-field fxLayoutAlign="center">
+    <input #email matInput placeholder="email">
+  </mat-form-field>
+  <br>
+  <mat-form-field fxLayoutAlign="center">
+    <input #password matInput placeholder="password">
+  </mat-form-field>
+  <br>
+  <mat-form-field fxLayoutAlign="center">
+    <input #confirm matInput placeholder="confirm password">
+  </mat-form-field>
+  <br>
+  <mat-form-field fxLayoutAlign="center">
+    <input #username matInput placeholder="username">
+  </mat-form-field>
+  <br>
+  <br>
+  <div fxLayoutAlign="center">
+      <button mat-button name="button">Sign Up</button>
+  </div>
+  <br>
+  <br>
+  <div align="center">
+    Already has an account? <button mat-flat-button routerLink="/login">Login</button>
+  </div>
+</mat-card>
