@@ -30,5 +30,6 @@ export class RepliesComponent implements OnInit {
       mdate: '2019-04-07 03:57:23.530286 +00:00'
     };
     this.replies.push(newMessage);
+    this.replyForm.reset();
   }
 }
