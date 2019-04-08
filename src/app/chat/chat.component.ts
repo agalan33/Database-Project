@@ -39,9 +39,10 @@ export class ChatComponent implements OnInit {
       mtext: this.messageForm.value.mtext,
       likes: 0,
       dislikes: 0,
-      mdate: '4/4/2019 10:43pm'
+      mdate: '2019-04-07 03:57:23.530286 +00:00'
     };
     this.messages.push(newMessage);
+    this.messageForm.reset();
   }
 
 }
