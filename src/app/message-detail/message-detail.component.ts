@@ -15,6 +15,10 @@ export class MessageDetailComponent implements OnInit {
   private replies: Message[];
   private likes: any[];
   private dislikes: any[];
+  likesnum: number;
+  dislikesnum: number;
+  selectedValue: string;
+  modified: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +32,9 @@ export class MessageDetailComponent implements OnInit {
         this.message = data.message;
       });
     this.getMessageAndReplies();
+    this.modified = false;
+    this.likesnum = 0;
+    this.dislikesnum =0;
   }
 
   getMessageAndReplies(): void {
@@ -39,6 +46,19 @@ export class MessageDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  selectionChanged(value: any) {
+    if(value == "like"){
+      if(this.modified)
+        this.dislikesnum--;
+      this.likesnum++;
+    }else{
+      if(this.modified)
+        this.likesnum--;
+      this.dislikesnum++;
+    }
+    this.modified = true;
   }
 
 }

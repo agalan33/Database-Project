@@ -10,10 +10,18 @@
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>DISLIKE</button>
+    <mat-button-toggle-group [value]="selectedValue" #group="matButtonToggleGroup" (change)="selectionChanged(group.value)">
+      <mat-button-toggle value="like">
+        <i class="material-icons">thumb_up</i>
+      </mat-button-toggle>
+      <mat-button-toggle value="dislike">
+        <i class="material-icons">thumb_down</i>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
   </mat-card-actions>
   <mat-card-footer>
+    <span>Likes: {{likesnum}} </span>
+    <span>Dislikes: {{dislikesnum}} </span>
     <p fxLayoutAlign="end">
       {{message.mdate | date: 'mediumDate'}} {{message.mdate | date: 'shortTime'}}
     </p>

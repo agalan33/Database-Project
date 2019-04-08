@@ -18,14 +18,10 @@
         <i class="material-icons">thumb_down</i>
       </mat-button-toggle>
     </mat-button-toggle-group>
-    <button mat-button>
-      REPLY
-    </button>
   </mat-card-actions>
   <mat-card-footer>
     <span>Likes: {{likes}} </span>
     <span>Dislikes: {{dislikes}} </span>
-    <span>Replies:  </span>
     <p fxLayoutAlign="end">
       {{message.mdate | date: 'mediumDate'}} {{message.mdate | date: 'shortTime'}}
     </p>
