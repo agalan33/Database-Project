@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Message } from '../classes/message';
+import {Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges} from '@angular/core';
+import { Message } from '../message';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-message',
@@ -13,12 +14,24 @@ export class MessageComponent implements OnInit {
   selectedValue: string;
   modified: boolean;
 
-  constructor() {}
+  constructor(private ms: MessageService) {}
 
   ngOnInit() {
     this.modified = false;
-    this.likes = 0;
-    this.dislikes =0;
+    this.getNumLikes();
+    this.getNumDislikes();
+  }
+
+  getNumLikes() {
+    this.ms.getNumLikes(this.message.mid).subscribe(likes => {
+      this.likes = likes;
+    });
+  }
+
+  getNumDislikes() {
+    this.ms.getNumDislikes(this.message.mid).subscribe(dislikes => {
+      this.dislikes = dislikes;
+    });
   }
 
   selectionChanged(value: any) {
