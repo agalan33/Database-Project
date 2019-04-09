@@ -27,7 +27,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/theme.scss"
             ],
             "scripts": []
           },
@@ -61,7 +62,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Database-Project:build"
+            "browserTarget": "Database-Project:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {

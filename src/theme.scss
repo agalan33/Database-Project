@@ -1,0 +1,8 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$database-project-primary: mat-palette($mat-deep-orange);
+$database-project-accent:  mat-palette($mat-deep-orange, 500, 900, A100);
+$database-project-warn:    mat-palette($mat-deep-orange);
+$database-project-theme: mat-light-theme($database-project-primary, $database-project-accent, $database-project-warn);
+@include angular-material-theme($database-project-theme);

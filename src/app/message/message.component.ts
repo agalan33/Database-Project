@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core'
-import { Message } from '../message'
+import {Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges} from '@angular/core';
+import { Message } from '../classes/message';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-message',
@@ -8,19 +9,43 @@ import { Message } from '../message'
 })
 export class MessageComponent implements OnInit {
   @Input() message: Message;
+  likes: number;
+  dislikes: number;
+  selectedValue: string;
+  modified: boolean;
 
-  constructor() {}
+  constructor(private ms: MessageService) {}
 
   ngOnInit() {
-    this.message = {
-      'id': 1,
-      'userName': "Shiba Inu",
-      'imgUrl': "https://material.angular.io/assets/img/examples/shiba2.jpg",
-      'message': "The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.",
-      'likes': 10,
-      'dislikes': 5
-    }
-
+    this.modified = false;
+    this.getNumLikes();
+    this.getNumDislikes();
   }
+
+  getNumLikes() {
+    this.ms.getNumLikes(this.message.mid).subscribe(likes => {
+      this.likes = likes;
+    });
+  }
+
+  getNumDislikes() {
+    this.ms.getNumDislikes(this.message.mid).subscribe(dislikes => {
+      this.dislikes = dislikes;
+    });
+  }
+
+  selectionChanged(value: any) {
+    if(value == "like"){
+      if(this.modified)
+        this.dislikes--;
+      this.likes++;
+    }else{
+      if(this.modified)
+        this.likes--;
+      this.dislikes++;
+    }
+    this.modified = true;
+  }
+
 
 }

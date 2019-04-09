@@ -1,0 +1,38 @@
+<mat-card>
+  <div fxLayoutAlign="flex-start">
+    <mat-card-title>
+      My Chats
+    </mat-card-title>
+    <span class="fill-space"></span>
+    <button mat-button >
+      <i class="material-icons add-contact">add_circle_outline</i>
+    </button>
+
+  </div>
+  <mat-tab-group>
+    <mat-tab label="All Chats">
+
+      <mat-form-field>
+        <input #searchAll matInput placeholder="search">
+      </mat-form-field>
+      <button mat-button >
+        <i class="material-icons add-contact">
+          search
+        </i>
+      </button>
+      <button mat-button>
+        <i class="material-icons add-contact">
+          cancel
+        </i>
+      </button>
+    </mat-tab>
+  </mat-tab-group>
+  <mat-table [dataSource]='chats' *ngIf="chats.length != 0">
+    <ng-container matColumnDef="cname">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let chat"> {{chat.cname}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="headers"></mat-header-row>
+    <mat-row *matRowDef="let chat; columns: headers" (click)="goToChat(chat.cid)"></mat-row>
+  </mat-table>
+</mat-card>
