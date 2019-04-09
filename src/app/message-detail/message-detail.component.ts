@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Message } from '../message';
+import { Message } from '../classes/message';
 import { MessageService } from '../message.service';
 import { take, first } from 'rxjs/operators';
 

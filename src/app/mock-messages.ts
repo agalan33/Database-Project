@@ -1,4 +1,4 @@
-import { Message } from './message';
+import { Message } from './classes/message';
 
 export const MESSAGES: Message[] = [
   {

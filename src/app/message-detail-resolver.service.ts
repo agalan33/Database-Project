@@ -8,7 +8,7 @@ import { Observable, of, EMPTY }  from 'rxjs';
 import { mergeMap, take }         from 'rxjs/operators';
 
 import { MessageService } from './message.service';
-import { Message } from './message';
+import { Message } from './classes/message';
 
 @Injectable({
   providedIn: 'root'

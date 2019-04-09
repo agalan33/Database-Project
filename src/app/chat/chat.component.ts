@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Message } from '../message';
+import { Message } from '../classes/message';
 import { MessageService } from '../message.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -24,14 +24,15 @@ export class ChatComponent implements OnInit {
 
   getMessages() {
     this.msgService.getMessages().subscribe(
-      (data: Message[]) =>
-        {data.map(item => this.messages.push(item));
-        console.log(this.messages);}
+      (data: Message[]) => {
+        data.map(item => this.messages.push(item));
+        console.log(this.messages);
+      }
     );
   }
 
-  onSend(){
-    let newMessage: Message = {
+  onSend() {
+    const newMessage: Message = {
       mid: 1000,
       ufirst_name: 'This',
       ulast_name: 'User',
