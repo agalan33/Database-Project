@@ -17,19 +17,26 @@ export class MessageService {
   }
 
   getMessage(id: number): Observable<Message> {
-    return this.http.get<Message>('DbProject/users/1/chats/1/messages/'+id);
+    return this.http.get<Message>('DbProject/users/1/chats/1/messages/' + id);
   }
 
   getReplies(id: number): Observable<Message[]> {
-    return this.http.get<Message[]>('DbProject/users/1/chats/1/messages/'+id+'/replies');
+    return this.http.get<Message[]>('DbProject/users/1/chats/1/messages/' + id + '/replies');
   }
 
-  //WIP
+  getNumLikes(id: number): Observable<int> {
+    return this.http.get<int>('/DbProject/messages/' + id + '/likestotal');
+  }
+
+  getNumDislikes(id: number): Observable<int> {
+    return this.http.get<int>('/DbProject/messages/' + id +'/dislikestotal');
+  }
+
   getLikes(id: number): Observable<any[]> {
     return of(MESSAGES);
   }
 
-  //WIP
+  // WIP
   getDislikes(id: number): Observable<any[]> {
     return of(MESSAGES);
   }

@@ -33,15 +33,27 @@ export class MessageDetailComponent implements OnInit {
       });
     this.getMessageAndReplies();
     this.modified = false;
-    this.likesnum = 0;
-    this.dislikesnum =0;
+    this.getNumLikes();
+    this.getNumDislikes();
   }
 
   getMessageAndReplies(): void {
     const id = +this.route.snapshot.paramMap.get('mid');
     this.msgService.getReplies(id).subscribe(
       replies => this.replies = replies
-    )
+    );
+  }
+
+  getNumLikes() {
+    this.msgService.getNumLikes(this.message.mid).subscribe(likes => {
+      this.likesnum = likes;
+    });
+  }
+
+  getNumDislikes() {
+    this.msgService.getNumDislikes(this.message.mid).subscribe(dislikes => {
+      this.dislikesnum = dislikes;
+    });
   }
 
   goBack(): void {
