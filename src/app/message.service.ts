@@ -29,15 +29,15 @@ export class MessageService {
   }
 
   getNumDislikes(id: number): Observable<int> {
-    return this.http.get<int>('/DbProject/messages/' + id +'/dislikestotal');
+    return this.http.get<int>('/DbProject/messages/' + id + '/dislikestotal');
   }
 
   getLikes(id: number): Observable<any[]> {
-    return of(MESSAGES);
+    return this.http.get<any>('/DbProject/users/1/chats/1/messages/' + id + '/likes/users');
   }
 
   // WIP
   getDislikes(id: number): Observable<any[]> {
-    return of(MESSAGES);
+    return this.http.get<any>('/DbProject/users/1/chats/1/messages/' + id + '/dislikes/users');
   }
 }
