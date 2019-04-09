@@ -1,0 +1,14 @@
+<form [formGroup]="messageForm" (ngSubmit)="onSend()" fxLayout="column">
+  <mat-form-field class="msg-img-link">
+    <input matInput placeholder="Image link" formControlName="mimage">
+  </mat-form-field>
+  <div fxLayoutGap="10%">
+    <mat-form-field class="msg-text-box" appearance="outline" fxFlex="80%">
+      <textarea matInput placeholder="Write a message..." formControlName="mtext"></textarea>
+    </mat-form-field>
+    <button type="submit" [disabled]="!messageForm.valid" mat-raised-button color="primary" fxFlex="10%">Send</button>
+  </div>
+</form>
+<div class="container" fxLayout="column" fxLayoutGap="20px">
+  <app-message *ngFor="let message of messages" [message]="message" fxLayoutAlign="center"></app-message>
+</div>

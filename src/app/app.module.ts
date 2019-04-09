@@ -12,9 +12,15 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ContactListComponent } from './contact-list/contact-list.component';
-import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AddContactComponent } from './add-contact/add-contact.component';
+import { ChatComponent } from './chat/chat.component';
+import { MessageDetailComponent } from './message-detail/message-detail.component';
+import { RepliesComponent } from './replies/replies.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AllChatsComponent } from './all-chats/all-chats.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,12 +30,21 @@ import { AddContactComponent } from './add-contact/add-contact.component';
     CreateAccountComponent,
     ContactListComponent,
     HomeComponent,
-    AddContactComponent
+    AddContactComponent,
+    ChatComponent,
+    NavBarComponent,
+    MessageDetailComponent,
+    RepliesComponent,
+    AllChatsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MaterialComponentsModule,
+    FlexLayoutModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     MaterialComponentsModule,
     MatDatepickerModule,
     MatNativeDateModule,
