@@ -33,10 +33,18 @@
   </mat-tab>
   <mat-tab label="Likes">
     <mat-list role="list" *ngFor="let like of likes">
-      <mat-list-item role="listitem">{{like.userName}}</mat-list-item>
+      <mat-list-item role="listitem">
+        <img mat-card-avatar src="https://static.thenounproject.com/png/363633-200.png">
+        {{like.ufirst_name}} {{like.ulast_name}}
+      </mat-list-item>
     </mat-list>
   </mat-tab>
   <mat-tab label="Dislikes">
-
+    <mat-list role="list" *ngFor="let dislike of dislikes">
+      <mat-list-item role="listitem">
+        <img mat-card-avatar src="https://static.thenounproject.com/png/363633-200.png">
+        {{dislike.ufirst_name}} {{dislike.ulast_name}}
+      </mat-list-item>
+    </mat-list>
   </mat-tab>
 </mat-tab-group>
