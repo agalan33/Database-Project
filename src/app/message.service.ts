@@ -4,6 +4,8 @@ import { Message } from './classes/message';
 import { MESSAGES } from './mock-messages';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import {Reaction} from './classes/reaction.type';
+
 
 @Injectable({
   providedIn: 'root'
@@ -24,20 +26,20 @@ export class MessageService {
     return this.http.get<Message[]>('DbProject/users/1/chats/1/messages/' + id + '/replies');
   }
 
-  getNumLikes(id: number): Observable<int> {
-    return this.http.get<int>('/DbProject/messages/' + id + '/likestotal');
+  getNumLikes(id: number): Observable<number> {
+    return this.http.get<number>('/DbProject/messages/' + id + '/likestotal');
   }
 
-  getNumDislikes(id: number): Observable<int> {
-    return this.http.get<int>('/DbProject/messages/' + id + '/dislikestotal');
+  getNumDislikes(id: number): Observable<number> {
+    return this.http.get<number>('/DbProject/messages/' + id + '/dislikestotal');
   }
 
-  getLikes(id: number): Observable<any[]> {
-    return this.http.get<any>('/DbProject/users/1/chats/1/messages/' + id + '/likes/users');
+  getLikes(id: number): Observable<Reaction[]> {
+    return this.http.get<Reaction[]>('/DbProject/users/1/chats/1/messages/' + id + '/likes/users');
   }
 
   // WIP
-  getDislikes(id: number): Observable<any[]> {
-    return this.http.get<any>('/DbProject/users/1/chats/1/messages/' + id + '/dislikes/users');
+  getDislikes(id: number): Observable<Reaction[]> {
+    return this.http.get<Reaction[]>('/DbProject/users/1/chats/1/messages/' + id + '/dislikes/users');
   }
 }

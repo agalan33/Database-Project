@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { Message } from '../classes/message';
 import { MessageService } from '../message.service';
 import { take, first } from 'rxjs/operators';
+import {Reaction} from '../classes/reaction.type';
 
 @Component({
   selector: 'app-message-detail',
@@ -13,8 +14,8 @@ import { take, first } from 'rxjs/operators';
 export class MessageDetailComponent implements OnInit {
   private message: Message;
   private replies: Message[];
-  private likes: any[];
-  private dislikes: any[];
+  private likes: Reaction[];
+  private dislikes: Reaction[];
   likesnum: number;
   dislikesnum: number;
   selectedValue: string;
@@ -35,6 +36,8 @@ export class MessageDetailComponent implements OnInit {
     this.modified = false;
     this.getNumLikes();
     this.getNumDislikes();
+    this.getLikes();
+    this.getDislikes();
   }
 
   getMessageAndReplies(): void {
@@ -53,6 +56,17 @@ export class MessageDetailComponent implements OnInit {
   getNumDislikes() {
     this.msgService.getNumDislikes(this.message.mid).subscribe(dislikes => {
       this.dislikesnum = dislikes;
+    });
+  }
+
+  getLikes() {
+    this.msgService.getLikes(this.message.mid).subscribe( likes => {
+      this.likes = likes;
+    });
+  }
+  getDislikes() {
+    this.msgService.getDislikes(this.message.mid).subscribe( dislikes => {
+      this.dislikes = dislikes;
     });
   }
 
