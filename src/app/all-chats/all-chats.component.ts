@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Chats } from '../classes/chats.type';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-all-chats',
@@ -14,12 +15,18 @@ export class AllChatsComponent implements OnInit {
   public headers = ['cname'];
   public pURL = '/chat';
   public cURL = '';
-  constructor(private httpClient: HttpClient, private router: Router) { }
+  public uid: number;
+  constructor(private httpClient: HttpClient, private router: Router, private route: ActivatedRoute, private dialog: MatDialog) { }
 
   ngOnInit() {
+    this.uid = + this.route.snapshot.paramMap.get('uid');
     this.httpClient.get<Chats[]>(this.chatsURL).subscribe(data => {
       this.chats = data;
     });
+  }
+
+  newChat(uid: number) {
+    return;
   }
 
   goToChat(index: number) {

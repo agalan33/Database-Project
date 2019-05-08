@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Message } from '../classes/message';
 import { MessageService } from '../message.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -16,17 +17,17 @@ export class ChatComponent implements OnInit {
   });
 
 
-  constructor(private msgService: MessageService) { }
+  constructor(private msgService: MessageService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getMessages();
+    const cid = + this.route.snapshot.paramMap.get('cid');
+    this.getMessages(cid);
   }
 
-  getMessages() {
-    this.msgService.getMessages().subscribe(
+  getMessages(cid: number) {
+    this.msgService.getMessages(cid).subscribe(
       (data: Message[]) => {
         data.map(item => this.messages.push(item));
-        console.log(this.messages);
       }
     );
   }

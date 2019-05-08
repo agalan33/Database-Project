@@ -10,7 +10,7 @@ import { MessageDetailComponent } from './message-detail/message-detail.componen
 import { MessageDetailResolverService } from './message-detail-resolver.service';
 
 const routes: Routes = [
-  {path: 'chat', component: ChatComponent},
+  {path: 'users/:uid/chats/:cid', component: ChatComponent},
   {
     path: 'chat/messages/:mid',
     component: MessageDetailComponent,
@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'create_account', component: CreateAccountComponent},
   {path: 'contact-list', component: ContactListComponent},
-  {path: 'all-chats', component: AllChatsComponent}
+  {path: 'users/1/chats', component: AllChatsComponent}
 ];
 
 @NgModule({
