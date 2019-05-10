@@ -22,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AllChatsComponent } from './all-chats/all-chats.component';
 import { ProfileComponent } from './profile/profile.component';
 import {NavBarService} from './nav-bar/nav-bar.service';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {NavBarService} from './nav-bar/nav-bar.service';
     MessageDetailComponent,
     RepliesComponent,
     AllChatsComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,7 @@ import {NavBarService} from './nav-bar/nav-bar.service';
     MatSnackBarModule
   ],
   entryComponents: [
-    AddContactComponent
+    AddContactComponent, EditUserComponent
   ],
   providers: [NavBarService],
   bootstrap: [AppComponent]

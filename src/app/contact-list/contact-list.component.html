@@ -48,6 +48,10 @@
       <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
       <mat-cell *matCellDef="let contact"> {{contact.uemail}} </mat-cell>
     </ng-container>
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+      <mat-cell *matCellDef="let contact" (click)="removeContact(contact.contactid)"><button mat-button class="add-contact"><i class="material-icons add-contact">delete_forever</i></button> </mat-cell>
+    </ng-container>
     <mat-header-row *matHeaderRowDef="headers"></mat-header-row>
     <mat-row *matRowDef="let contact; columns: headers"></mat-row>
   </mat-table>

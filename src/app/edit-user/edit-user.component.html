@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Edit User</h2>
+<mat-form-field fxLayoutAlign="center">
+  <input id="email" #email matInput placeholder="email">
+</mat-form-field>
+<br>
+<mat-form-field fxLayoutAlign="center">
+  <input id="password" #password type="password" matInput placeholder="password">
+</mat-form-field>
+<br>
+<mat-form-field fxLayoutAlign="center">
+  <input id="username" #username matInput placeholder="username">
+</mat-form-field>
+<br>
+<mat-form-field fxLayoutAlign="center">
+  <input id="fname" #fname matInput placeholder="first name">
+</mat-form-field>
+<br>
+<mat-form-field fxLayoutAlign="center">
+  <input id="lname" #lname matInput placeholder="last name">
+</mat-form-field>
+<mat-form-field fxLayoutAlign="center">
+  <input id="pnumber" #pnumber matInput placeholder="phone number">
+</mat-form-field>
+<br>
+<mat-form-field fxLayoutAlign="center">
+  <input id="age" #age matInput placeholder="age">
+</mat-form-field>
+<br>
+<div class="add-contact" align="center">
+  <button mat-button (click)="save(fname.value, lname.value, email.value, password.value, username.value, pnumber.value, age.value)">Save</button>
+</div>
+

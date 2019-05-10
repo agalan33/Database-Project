@@ -6,5 +6,5 @@ export interface User {
   uid: number;
   username: string;
   uage: number;
-  uphone_number: string;
+  uphone: string;
 }
