@@ -14,9 +14,32 @@
 </div>
 
 <div class="container" fxLayout="row" fxLayoutAlign="space-evenly">
+  <google-chart id="Postsperdayfromuser"
+                [title]="title6"
+                [type]="line"
+                [data]="postsperdayfromuser"
+                [columnNames]="columnNames6"
+                [options]="options2"
+                [width]="width2"
+                [height]="height2">
+  </google-chart>
+
+
+  <google-chart id="MostActiveUsers"
+                [title]="title2"
+                [type]="line"
+                [data]="postsperday"
+                [columnNames]="columnNames2"
+                [options]="options2"
+                [width]="width2"
+                [height]="height2">
+  </google-chart>
+</div>
+
+  <div class="container" fxLayout="row" fxLayoutAlign="space-evenly">
   <google-chart id="Postsperday"
     [title]="title2"
-    [type]="type2"
+    [type]="line"
     [data]="postsperday"
     [columnNames]="columnNames2"
     [options]="options2"
@@ -26,20 +49,20 @@
 
   <google-chart id="Repliesperday"
     [title]="title"
-    [type]="type2"
+    [type]="line"
     [data]="repliesperday"
     [columnNames]="columnNames"
     [options]="options2"
     [width]="width2"
     [height]="height2">
   </google-chart>
-</div>
+  </div>
 
 
 <div class="container" fxLayout="row" fxLayoutAlign="space-evenly">
   <google-chart id="Likessperday"
                 [title]="title4"
-                [type]="type2"
+                [type]="line"
                 [data]="likesperday"
                 [columnNames]="columnNames4"
                 [options]="options2"
@@ -49,7 +72,7 @@
 
   <google-chart id="Dislikesperday"
                 [title]="title5"
-                [type]="type2"
+                [type]="line"
                 [data]="dislikesperday"
                 [columnNames]="columnNames5"
                 [options]="options2"

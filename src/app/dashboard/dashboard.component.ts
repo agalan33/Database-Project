@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {PostsPerDay} from '../classes/PostsPerDay';
 import {TrendingHash} from '../classes/TrendingHash';
+import {NavBarService} from '../nav-bar/nav-bar.service';
+import {Chats} from '../classes/chats.type';
+import {User} from '../classes/user.type';
 
 
 @Component({
@@ -10,11 +13,14 @@ import {TrendingHash} from '../classes/TrendingHash';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-private postsperdayURL = 'http://127.0.0.1:5000/DbProject/messages/daily_count';
-private repliesperdayURL = 'http://127.0.0.1:5000/DbProject/replies/daily_count';
-private likesperdayURL = 'http://127.0.0.1:5000/DbProject/dailyLikes';
-private dislikesperdayURL = 'http://127.0.0.1:5000/DbProject/dailyDislikes';
-private trendingHashURL = 'http://127.0.0.1:5000/DbProject/hashtags/trending';
+
+  public usr: User;
+  private postsperdayURL = 'http://127.0.0.1:5000/DbProject/messages/daily_count';
+  private repliesperdayURL = 'http://127.0.0.1:5000/DbProject/replies/daily_count';
+  private likesperdayURL = 'http://127.0.0.1:5000/DbProject/dailyLikes';
+  private dislikesperdayURL = 'http://127.0.0.1:5000/DbProject/dailyDislikes';
+  private trendingHashURL = 'http://127.0.0.1:5000/DbProject/hashtags/trending';
+  private postsperdayfromuserURL = 'http://127.0.0.1:5000/DbProject/messages/users/';
 
   title3 = 'Trending Hashtags';
   type3 = 'Table';
@@ -39,7 +45,7 @@ private trendingHashURL = 'http://127.0.0.1:5000/DbProject/hashtags/trending';
   columnNames5 = ['Date', 'Number of dislikes'];
 
   title2 = 'Total posts per day';
-  type2 = 'LineChart';
+  line = 'LineChart';
   postsperday = [];
   columnNames2 = ['Date', 'Number of posts'];
   options2 = {
@@ -47,9 +53,26 @@ private trendingHashURL = 'http://127.0.0.1:5000/DbProject/hashtags/trending';
   };
   width2 = 550;
   height2 = 400;
-  constructor(private httpClient: HttpClient) { }
+
+  title6 = 'My posts per day'
+  postsperdayfromuser= [];
+  columnNames6 = ['Date', 'Number of posts'];
+
+  constructor(private httpClient: HttpClient, private navBarService: NavBarService) { }
 
   ngOnInit() {
+    this.navBarService.isLogged();
+    this.navBarService.changeLogin.subscribe(data => {
+      if (data) {
+        this.usr = this.navBarService.getCurrentUser();
+        const url = this.postsperdayfromuserURL.concat(String(this.usr.uid));
+        this.httpClient.get<PostsPerDay[]>(url).subscribe((data: PostsPerDay[]) => {
+          data.forEach(elem => {
+            this.postsperdayfromuser.push([elem.date, elem.count]);
+          });
+        });
+      }
+    });
     this.getTrendingHash();
     this.getPostsPerDay();
     this.getRepliesPerDay();

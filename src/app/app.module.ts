@@ -9,7 +9,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material';
+import {MatNativeDateModule, MatSnackBarModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { HomeComponent } from './home/home.component';
@@ -22,6 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AllChatsComponent } from './all-chats/all-chats.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GoogleChartsModule } from 'angular-google-charts';
+import { ProfileComponent } from './profile/profile.component';
+import {NavBarService} from './nav-bar/nav-bar.service';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { GoogleChartsModule } from 'angular-google-charts';
     MessageDetailComponent,
     RepliesComponent,
     AllChatsComponent,
-    DashboardComponent
+    DashboardComponent,
+    AllChatsComponent,
+    ProfileComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -54,11 +60,12 @@ import { GoogleChartsModule } from 'angular-google-charts';
     FlexLayoutModule,
     HttpClientModule,
     GoogleChartsModule.forRoot(),
+    MatSnackBarModule
   ],
   entryComponents: [
-    AddContactComponent
+    AddContactComponent, EditUserComponent
   ],
-  providers: [],
+  providers: [NavBarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
