@@ -3,6 +3,7 @@ import { Message } from '../classes/message';
 import { MessageService } from '../message.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
+import {NewMessage} from '../classes/newMessage';
 
 @Component({
   selector: 'app-chat',
@@ -15,13 +16,16 @@ export class ChatComponent implements OnInit {
     mimage: new FormControl(''),
     mtext: new FormControl('', Validators.required)
   });
+  uid: number;
+  cid: number;
 
 
   constructor(private msgService: MessageService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    const cid = + this.route.snapshot.paramMap.get('cid');
-    this.getMessages(cid);
+    this.cid = + this.route.snapshot.paramMap.get('cid');
+    this.uid = + this.route.snapshot.paramMap.get('uid');
+    this.getMessages(this.cid);
   }
 
   getMessages(cid: number) {
@@ -33,18 +37,13 @@ export class ChatComponent implements OnInit {
   }
 
   onSend() {
-    const newMessage: Message = {
-      mid: 1000,
-      ufirst_name: 'This',
-      ulast_name: 'User',
-      mimage: this.messageForm.value.mimage,
-      mtext: this.messageForm.value.mtext,
-      likes: 0,
-      dislikes: 0,
-      mdate: '2019-04-07 03:57:23.530286 +00:00'
-    };
-    this.messages.push(newMessage);
+    const newMessage: NewMessage = this.messageForm.value;
+    this.msgService.sendMessage(this.uid, this.cid, newMessage).subscribe(msg => {
+      msg.likes = 0;
+      msg.dislikes = 0;
+      console.log(msg);
+      this.messages.push(msg);
+    });
     this.messageForm.reset();
   }
-
 }

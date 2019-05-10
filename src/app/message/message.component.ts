@@ -35,13 +35,15 @@ export class MessageComponent implements OnInit {
   }
 
   selectionChanged(value: any) {
-    if(value == "like"){
-      if(this.modified)
+    if (value === 'like') {
+      if (this.modified) {
         this.dislikes--;
+      }
       this.likes++;
-    }else{
-      if(this.modified)
+    } else {
+      if (this.modified) {
         this.likes--;
+      }
       this.dislikes++;
     }
     this.modified = true;
