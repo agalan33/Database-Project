@@ -20,6 +20,7 @@ import { RepliesComponent } from './replies/replies.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AllChatsComponent } from './all-chats/all-chats.component';
+import { AddChatComponent } from './add-chat/add-chat.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AllChatsComponent } from './all-chats/all-chats.component';
     NavBarComponent,
     MessageDetailComponent,
     RepliesComponent,
-    AllChatsComponent
+    AllChatsComponent,
+    AddChatComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import { AllChatsComponent } from './all-chats/all-chats.component';
     HttpClientModule,
   ],
   entryComponents: [
-    AddContactComponent
+    AddContactComponent,
+    AddChatComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

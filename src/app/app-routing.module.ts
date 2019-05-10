@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'create_account', component: CreateAccountComponent},
   {path: 'contact-list', component: ContactListComponent},
-  {path: 'users/1/chats', component: AllChatsComponent}
+  {path: 'users/:uid/chats', component: AllChatsComponent}
 ];
 
 @NgModule({
