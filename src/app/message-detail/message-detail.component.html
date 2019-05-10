@@ -1,32 +1,4 @@
-<mat-card class="example-card" fxFlex="60%">
-  <mat-card-header>
-    <img mat-card-avatar src="https://static.thenounproject.com/png/363633-200.png">
-    <mat-card-title>{{message.ufirst_name}} {{message.ulast_name}}</mat-card-title>
-  </mat-card-header>
-  <img mat-card-image src="{{message.mimage}}" alt="Message photo">
-  <mat-card-content>
-    <p>
-      {{message.mtext}}
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <mat-button-toggle-group [value]="selectedValue" #group="matButtonToggleGroup" (change)="selectionChanged(group.value)">
-      <mat-button-toggle value="like">
-        <i class="material-icons">thumb_up</i>
-      </mat-button-toggle>
-      <mat-button-toggle value="dislike">
-        <i class="material-icons">thumb_down</i>
-      </mat-button-toggle>
-    </mat-button-toggle-group>
-  </mat-card-actions>
-  <mat-card-footer>
-    <span>Likes: {{likesnum}} </span>
-    <span>Dislikes: {{dislikesnum}} </span>
-    <p fxLayoutAlign="end">
-      {{message.mdate | date: 'mediumDate'}} {{message.mdate | date: 'shortTime'}}
-    </p>
-  </mat-card-footer>
-</mat-card>
+<app-message [message]="message"></app-message>
 <mat-tab-group fxFlex="40%">
   <mat-tab label="Replies">
     <app-replies [replies]="replies"></app-replies>

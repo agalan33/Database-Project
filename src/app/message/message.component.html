@@ -3,7 +3,7 @@
     <img mat-card-avatar src="https://static.thenounproject.com/png/363633-200.png">
     <mat-card-title>{{message.ufirst_name}} {{message.ulast_name}}</mat-card-title>
   </mat-card-header>
-  <img mat-card-image src={{message.mimage}} alt="Message photo" routerLink="/chat/messages/{{message.mid}}">
+  <img mat-card-image src="{{message.mimage}}" alt="Message photo" routerLink="messages/{{message.mid}}">
   <mat-card-content>
     <p>
       {{message.mtext}}

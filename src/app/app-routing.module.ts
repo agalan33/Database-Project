@@ -12,7 +12,7 @@ import { MessageDetailResolverService } from './message-detail-resolver.service'
 const routes: Routes = [
   {path: 'users/:uid/chats/:cid', component: ChatComponent},
   {
-    path: 'chat/messages/:mid',
+    path: 'users/:uid/chats/:cid/messages/:mid',
     component: MessageDetailComponent,
     resolve: {
       message: MessageDetailResolverService
