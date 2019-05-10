@@ -9,7 +9,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material';
+import {MatNativeDateModule, MatSnackBarModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { HomeComponent } from './home/home.component';
@@ -20,6 +20,8 @@ import { RepliesComponent } from './replies/replies.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AllChatsComponent } from './all-chats/all-chats.component';
+import { ProfileComponent } from './profile/profile.component';
+import {NavBarService} from './nav-bar/nav-bar.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { AllChatsComponent } from './all-chats/all-chats.component';
     NavBarComponent,
     MessageDetailComponent,
     RepliesComponent,
-    AllChatsComponent
+    AllChatsComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -50,11 +53,12 @@ import { AllChatsComponent } from './all-chats/all-chats.component';
     MatNativeDateModule,
     FlexLayoutModule,
     HttpClientModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     AddContactComponent
   ],
-  providers: [],
+  providers: [NavBarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,9 +8,11 @@ import { ChatComponent } from './chat/chat.component';
 import { AllChatsComponent} from './all-chats/all-chats.component';
 import { MessageDetailComponent } from './message-detail/message-detail.component';
 import { MessageDetailResolverService } from './message-detail-resolver.service';
+import {ProfileComponent} from './profile/profile.component';
 
 const routes: Routes = [
   {path: 'chat', component: ChatComponent},
+  {path: 'my-profile', component: ProfileComponent},
   {
     path: 'chat/messages/:mid',
     component: MessageDetailComponent,
