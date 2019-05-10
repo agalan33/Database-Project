@@ -20,6 +20,8 @@ import { RepliesComponent } from './replies/replies.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AllChatsComponent } from './all-chats/all-chats.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { AllChatsComponent } from './all-chats/all-chats.component';
     NavBarComponent,
     MessageDetailComponent,
     RepliesComponent,
-    AllChatsComponent
+    AllChatsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ import { AllChatsComponent } from './all-chats/all-chats.component';
     MatNativeDateModule,
     FlexLayoutModule,
     HttpClientModule,
+    GoogleChartsModule.forRoot(),
   ],
   entryComponents: [
     AddContactComponent

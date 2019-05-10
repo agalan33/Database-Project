@@ -8,6 +8,7 @@ import { ChatComponent } from './chat/chat.component';
 import { AllChatsComponent} from './all-chats/all-chats.component';
 import { MessageDetailComponent } from './message-detail/message-detail.component';
 import { MessageDetailResolverService } from './message-detail-resolver.service';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: 'chat', component: ChatComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'create_account', component: CreateAccountComponent},
   {path: 'contact-list', component: ContactListComponent},
-  {path: 'all-chats', component: AllChatsComponent}
+  {path: 'all-chats', component: AllChatsComponent},
+  {path: 'dashboard', component: DashboardComponent}
 ];
 
 @NgModule({
