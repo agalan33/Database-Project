@@ -3,7 +3,6 @@ import {HttpClient} from '@angular/common/http';
 import {PostsPerDay} from '../classes/PostsPerDay';
 import {TrendingHash} from '../classes/TrendingHash';
 import {NavBarService} from '../nav-bar/nav-bar.service';
-import {Chats} from '../classes/chats.type';
 import {User} from '../classes/user.type';
 
 
@@ -54,8 +53,8 @@ export class DashboardComponent implements OnInit {
   width2 = 550;
   height2 = 400;
 
-  title6 = 'My posts per day'
-  postsperdayfromuser= [];
+  title6 = 'My posts per day';
+  postsperdayfromuser = [];
   columnNames6 = ['Date', 'Number of posts'];
 
   constructor(private httpClient: HttpClient, private navBarService: NavBarService) { }
@@ -66,8 +65,9 @@ export class DashboardComponent implements OnInit {
       if (data) {
         this.usr = this.navBarService.getCurrentUser();
         const url = this.postsperdayfromuserURL.concat(String(this.usr.uid));
-        this.httpClient.get<PostsPerDay[]>(url).subscribe((data: PostsPerDay[]) => {
-          data.forEach(elem => {
+        this.httpClient.get<PostsPerDay[]>(url).subscribe((data2: PostsPerDay[]) => {
+          this.postsperdayfromuser = [];
+          data2.forEach(elem => {
             this.postsperdayfromuser.push([elem.date, elem.count]);
           });
         });
