@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-title align="center">Login</mat-card-title>
   <mat-form-field fxLayoutAlign="center">
-    <input #email matInput placeholder="email">
+    <input #username matInput placeholder="username">
   </mat-form-field>
   <br>
   <mat-form-field fxLayoutAlign="center">
@@ -9,7 +9,7 @@
   </mat-form-field>
   <br>
   <div align="center">
-    <button mat-button name="button">Login</button>
+    <button mat-button name="button" (click)="login(username.value, password.value)">Login</button>
   </div>
   <br>
   <br>

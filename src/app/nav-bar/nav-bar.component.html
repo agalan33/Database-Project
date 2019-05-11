@@ -7,12 +7,23 @@
             #matMenuTrigger="matMenuTrigger"
             ><i class="material-icons">menu</i></button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item routerLink="/">Home</button>
-              <button mat-menu-item routerLink="/contact-list">My Contacts</button>
-              <button mat-menu-item routerLink="/all-chats">My Chats</button>
+              <div *ngIf="isLogin">
+                <button mat-menu-item routerLink="/">Home</button>
+                <button mat-menu-item routerLink="/contact-list">My Contacts</button>
+                <button mat-menu-item routerLink="/all-chats">My Chats</button>
+                <button mat-menu-item routerLink="/dashboard">Dashboard</button>
+              </div>
+              <div *ngIf="!isLogin">
+                <button mat-menu-item routerLink="/">Home</button>
+              </div>
             </mat-menu>
             <span>Grinder</span>
             <span class="fill-space"></span>
-            <button mat-button routerLink="/login"><i class="material-icons">supervised_user_circle</i></button>
+            <div *ngIf="isLogin">
+              <button mat-button routerLink="/my-profile"><i class="material-icons">supervised_user_circle</i></button>
+            </div>
+            <div *ngIf="!isLogin">
+              <button mat-button routerLink="/login">Login</button>
+            </div>
   </mat-toolbar-row>
 </mat-toolbar>
