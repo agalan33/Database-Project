@@ -32,15 +32,17 @@ export class ManageMembersComponent implements OnInit {
     const chatID = this.router.url.charAt(this.router.url.length - 1);
     const url = this.membersURL.concat(String(chatID));
     const finishedURL = url.concat('/users');
-    this.httpClient.get<Contact[]>(finishedURL).subscribe( data => {
-      this.members = data;
-      for (let i = 0; i < data.length; i++) {
-        if (this.members[i].contactid === this.usr.uid) {
-          const me = '(Me) ';
-          this.members[i].username = me.concat(this.members[i].username);
+    if (String(Number(chatID)) !== 'NaN') {
+      this.httpClient.get<Contact[]>(finishedURL).subscribe( data => {
+        this.members = data;
+        for (let i = 0; i < data.length; i++) {
+          if (this.members[i].contactid === this.usr.uid) {
+            const me = '(Me) ';
+            this.members[i].username = me.concat(this.members[i].username);
+          }
         }
-      }
-    });
+      });
+    }
   }
   removeMember(id: number) {
     if (id === this.usr.uid) {
