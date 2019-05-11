@@ -26,6 +26,8 @@ import { ProfileComponent } from './profile/profile.component';
 import {NavBarService} from './nav-bar/nav-bar.service';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { AddChatComponent } from './add-chat/add-chat.component';
+import { ManageMembersComponent } from './manage-members/manage-members.component';
+import { AddContactToChatComponent } from './add-contact-to-chat/add-contact-to-chat.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { AddChatComponent } from './add-chat/add-chat.component';
     ProfileComponent,
     EditUserComponent,
     AllChatsComponent,
-    AddChatComponent
+    AddChatComponent,
+    ManageMembersComponent,
+    AddContactToChatComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +72,9 @@ import { AddChatComponent } from './add-chat/add-chat.component';
   entryComponents: [
     AddContactComponent,
     EditUserComponent,
-    AddChatComponent
+    AddChatComponent,
+    ManageMembersComponent,
+    AddContactToChatComponent
   ],
   providers: [NavBarService],
   bootstrap: [AppComponent]
