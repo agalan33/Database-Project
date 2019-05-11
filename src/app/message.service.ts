@@ -33,6 +33,14 @@ export class MessageService {
     return this.http.post<Message>('DbProject/users/' + uid + '/chats/' + cid + '/messages', httpParams);
   }
 
+  sendReply(mid: number, uid: number, cid: number, reply: NewMessage): Observable<Message> {
+    let httpParams = new HttpParams();
+    Object.keys(reply).forEach(key => {
+      httpParams = httpParams.append(key, reply[key]);
+    });
+    return this.http.post<Message>('DbProject/users/' + uid + '/chats/' + cid + '/messages/' + mid + '/replies', httpParams);
+  }
+
   getReplies(id: number): Observable<Message[]> {
     return this.http.get<Message[]>('DbProject/users/1/chats/1/messages/' + id + '/replies');
   }

@@ -51,7 +51,6 @@ export class MessageComponent implements OnInit {
         }
         this.modified = true;
       } else {
-        console.log('here');
         this.modified = false;
       }
     });
