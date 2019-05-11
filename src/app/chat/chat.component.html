@@ -1,7 +1,14 @@
 <mat-card>
-  <mat-card-header>
-    <mat-card-title><h2>Chat</h2></mat-card-title>
-  </mat-card-header>
+  <div fxLayoutAlign="flex-start">
+    <div>
+      <mat-card-title>Chat</mat-card-title>
+    </div>
+    <span class="fill-space"></span>
+    <div class="add-contact">
+      <button mat-button (click)="openDialog()">Manage Members</button>
+      <button mat-button (click)="deleteChat()">Delete Chat</button>
+    </div>
+  </div>
   <mat-card-content >
       <div class="container" fxLayout="column" fxLayoutGap="20px">
         <mat-card>
