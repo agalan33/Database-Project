@@ -32,6 +32,6 @@
       <mat-cell *matCellDef="let chat"> {{chat.cname}} </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="headers"></mat-header-row>
-    <mat-row *matRowDef="let chat; columns: headers" routerLink="{{chat.cid}}"></mat-row>
+    <mat-row *matRowDef="let chat; columns: headers" routerLink="/users/{{usr.uid}}/chats/{{chat.cid}}"></mat-row>
   </mat-table>
 </mat-card>

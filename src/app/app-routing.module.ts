@@ -26,7 +26,7 @@ const routes: Routes = [
   {path: 'create_account', component: CreateAccountComponent},
   {path: 'contact-list', component: ContactListComponent},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'users/:uid/chats', component: AllChatsComponent}
+  {path: 'all-chats', component: AllChatsComponent}
 ];
 
 @NgModule({

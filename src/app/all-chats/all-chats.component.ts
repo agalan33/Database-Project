@@ -20,14 +20,12 @@ export class AllChatsComponent implements OnInit {
   public headers = ['cname'];
   public pURL = '/chat';
   public cURL = '';
-  public uid: number;
   @ViewChild(MatTable) table: MatTable<any>;
 
   constructor(private httpClient: HttpClient, private router: Router,
               private route: ActivatedRoute, private dialog: MatDialog, private navBarService: NavBarService) { }
 
   ngOnInit() {
-    this.uid = + this.route.snapshot.paramMap.get('uid');
     this.navBarService.isLogged();
     this.navBarService.changeLogin.subscribe(data => {
       if (data) {
@@ -42,7 +40,7 @@ export class AllChatsComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(AddChatComponent, {data: { uid: this.uid }});
+    const dialogRef = this.dialog.open(AddChatComponent, {data: { uid: this.usr.uid }});
 
     dialogRef.afterClosed().subscribe((result: Chats) => {
       if (result) {
