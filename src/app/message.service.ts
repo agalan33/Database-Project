@@ -45,6 +45,10 @@ export class MessageService {
     return this.http.get<Message[]>('DbProject/users/1/chats/1/messages/' + id + '/replies');
   }
 
+  getNumReplies(mid: number): Observable<number> {
+    return this.http.get<number>('DbProject/messages/' + mid + '/repliestotal');
+  }
+
   getNumLikes(id: number): Observable<number> {
     return this.http.get<number>('/DbProject/messages/' + id + '/likestotal');
   }

@@ -10,6 +10,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class MessageComponent implements OnInit {
   @Input() message: Message;
+  replies: number;
   likes: number;
   dislikes: number;
   selectedValue: string;
@@ -25,7 +26,14 @@ export class MessageComponent implements OnInit {
     this.cid = + this.route.snapshot.paramMap.get('cid');
     this.getNumLikes();
     this.getNumDislikes();
+    this.getNumReplies();
     this.getUserReaction(this.message.mid, this.uid);
+  }
+
+  getNumReplies() {
+    this.ms.getNumReplies(this.message.mid).subscribe(replies => {
+      this.replies = replies;
+    });
   }
 
   getNumLikes() {

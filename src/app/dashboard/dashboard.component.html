@@ -3,6 +3,7 @@
 <div gdAlignColumns="space-evenly">
 <div class="container" fxLayoutAlign="center">
   <google-chart id="Postsperdayfromuser"
+                *ngIf="postsperdayfromuser"
                 [title]="title6"
                 [type]="line"
                 [data]="postsperdayfromuser"
@@ -15,6 +16,7 @@
 
 <div class="container" fxLayout="row" fxLayoutAlign="space-evenly">
   <google-chart id="TrendingHash"
+                *ngIf="trending"
                 [title]="title3"
                 [type]="type3"
                 [data]="trending"
@@ -26,6 +28,7 @@
 
 
   <google-chart id="MostActiveUsers"
+                *ngIf="mostactiverusers"
                 [title]="title7"
                 [type]="type3"
                 [data]="mostactiverusers"
@@ -38,6 +41,7 @@
 
   <div class="container" fxLayout="row" fxLayoutAlign="space-evenly">
   <google-chart id="Postsperday"
+                *ngIf="postsperday"
     [title]="title2"
     [type]="line"
     [data]="postsperday"
@@ -48,6 +52,7 @@
   </google-chart>
 
   <google-chart id="Repliesperday"
+                *ngIf="repliesperday"
     [title]="title"
     [type]="line"
     [data]="repliesperday"
@@ -61,6 +66,7 @@
 
 <div class="container" fxLayout="row" fxLayoutAlign="space-evenly">
   <google-chart id="Likessperday"
+                *ngIf="likesperday"
                 [title]="title4"
                 [type]="line"
                 [data]="likesperday"
@@ -71,6 +77,7 @@
   </google-chart>
 
   <google-chart id="Dislikesperday"
+                *ngIf="dislikesperday"
                 [title]="title5"
                 [type]="line"
                 [data]="dislikesperday"
