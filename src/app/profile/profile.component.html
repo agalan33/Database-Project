@@ -1,0 +1,24 @@
+<mat-card>
+  <mat-card-title>
+    My Profile
+  </mat-card-title>
+  <div align="center" *ngIf="usr != null">
+    <img class="square" src="https://www.bsn.eu/wp-content/uploads/2016/12/user-icon-image-placeholder.jpg">
+    <mat-card-subtitle>
+      My Info:
+    </mat-card-subtitle>
+    <mat-card-subtitle>
+      Email: {{usr.uemail}}
+      <br>
+      Username: {{usr.username}}
+      <br>
+      First Name: {{usr.ufirst_name}}
+      <br>
+      Last Name: {{usr.ulast_name}}
+    </mat-card-subtitle>
+    <div class="add-contact" align="center">
+      <button mat-button (click)="openDialog()">Edit</button>
+      <button mat-button (click)="logout()">Logout</button>
+    </div>
+  </div>
+</mat-card>

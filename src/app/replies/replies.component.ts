@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Message } from '../classes/message';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {MessageService} from '../message.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-replies',
@@ -12,24 +14,25 @@ export class RepliesComponent implements OnInit {
   replyForm = new FormGroup({
     mtext: new FormControl('', Validators.required)
   });
+  uid: number;
+  mid: number;
+  cid: number;
 
-  constructor() {}
+  constructor(private ms: MessageService, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.uid = +this.route.snapshot.paramMap.get('uid');
+    this.mid = +this.route.snapshot.paramMap.get('mid');
+    this.cid = +this.route.snapshot.paramMap.get('cid');
   }
 
-  onSend(){
-    let newMessage: Message = {
-      mid: 1000,
-      ufirst_name: 'This',
-      ulast_name: 'User',
-      mimage: null,
-      mtext: this.replyForm.value.mtext,
-      likes: 0,
-      dislikes: 0,
-      mdate: '2019-04-07 03:57:23.530286 +00:00'
-    };
-    this.replies.push(newMessage);
-    this.replyForm.reset();
+  onSend() {
+    this.ms.sendReply(this.mid, this.uid, this.cid, this.replyForm.value).subscribe(
+      reply => {
+        this.replies.push(reply);
+        this.replyForm.reset();
+      }
+    );
+
   }
 }

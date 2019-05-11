@@ -2,6 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Message } from '../classes/message';
 import { MessageService } from '../message.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {NewMessage} from '../classes/newMessage';
+import {MatDialog, MatDialogConfig, MatSnackBar} from '@angular/material';
+import {ManageMembersComponent} from '../manage-members/manage-members.component';
+import {User} from '../classes/user.type';
+import {Contact} from '../classes/contact.type';
+import {NavBarService} from '../nav-bar/nav-bar.service';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Component({
   selector: 'app-chat',
@@ -10,40 +18,85 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ChatComponent implements OnInit {
   private messages: Message[] = [];
+  private usr: User;
+  private owner: User;
   messageForm = new FormGroup({
     mimage: new FormControl(''),
     mtext: new FormControl('', Validators.required)
   });
+  uid: number;
+  cid: number;
 
 
-  constructor(private msgService: MessageService) { }
+  constructor(private msgService: MessageService, private route: ActivatedRoute, private dialog: MatDialog, private router: Router, private navBarService: NavBarService, private httpClient: HttpClient, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.getMessages();
+    this.cid = + this.route.snapshot.paramMap.get('cid');
+    this.uid = + this.route.snapshot.paramMap.get('uid');
+    this.getMessages(this.cid);
+    this.getChatOwner();
   }
 
-  getMessages() {
-    this.msgService.getMessages().subscribe(
+  getMessages(cid: number) {
+    this.navBarService.isLogged();
+    this.navBarService.changeLogin.subscribe(data => {
+      if (data) {
+        this.usr = this.navBarService.getCurrentUser();
+      }
+    });
+    this.msgService.getMessages(cid).subscribe(
       (data: Message[]) => {
         data.map(item => this.messages.push(item));
-        console.log(this.messages);
       }
     );
   }
 
   onSend() {
-    const newMessage: Message = {
-      mid: 1000,
-      ufirst_name: 'This',
-      ulast_name: 'User',
-      mimage: this.messageForm.value.mimage,
-      mtext: this.messageForm.value.mtext,
-      likes: 0,
-      dislikes: 0,
-      mdate: '2019-04-07 03:57:23.530286 +00:00'
-    };
-    this.messages.push(newMessage);
+    const newMessage: NewMessage = this.messageForm.value;
+    this.msgService.sendMessage(this.uid, this.cid, newMessage).subscribe(msg => {
+      msg.likes = 0;
+      msg.dislikes = 0;
+      console.log(msg);
+      this.messages.push(msg);
+    });
     this.messageForm.reset();
   }
 
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.height = '400px';
+    dialogConfig.width = '800px';
+    this.dialog.open(ManageMembersComponent, dialogConfig);
+  }
+  deleteChat() {
+    const chatID = this.router.url.charAt(this.router.url.length - 1);
+    if (this.owner.uid === this.usr.uid) {
+      const chatURL = 'http://127.0.0.1:5000/DbProject/users/';
+      const url = chatURL.concat(String(this.usr.uid));
+      const finishedURL = url.concat('/chats/');
+      const httpOptions = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }), body: {'uid': this.usr.uid, 'cid': Number(chatID)}
+      };
+      this.httpClient.delete(finishedURL.concat(chatID), httpOptions).subscribe(data => {
+        if (data['Result']) {
+          this.snackBar.open('Chat Deleted', '', {
+            duration: 5000
+          });
+          window.history.back();
+        }
+      });
+    } else {
+
+    }
+  }
+  getChatOwner() {
+    const chatID = this.router.url.charAt(this.router.url.length - 1);
+    const chatURL = 'http://127.0.0.1:5000/DbProject/chats/';
+    const finishedURL = chatURL.concat(String(chatID));
+    this.httpClient.get<User>(finishedURL.concat('/owner')).subscribe( data => {
+      this.owner = data;
+    });
+  }
 }

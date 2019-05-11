@@ -16,10 +16,6 @@ export class MessageDetailComponent implements OnInit {
   private replies: Message[];
   private likes: Reaction[];
   private dislikes: Reaction[];
-  likesnum: number;
-  dislikesnum: number;
-  selectedValue: string;
-  modified: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,9 +29,6 @@ export class MessageDetailComponent implements OnInit {
         this.message = data.message;
       });
     this.getMessageAndReplies();
-    this.modified = false;
-    this.getNumLikes();
-    this.getNumDislikes();
     this.getLikes();
     this.getDislikes();
   }
@@ -45,18 +38,6 @@ export class MessageDetailComponent implements OnInit {
     this.msgService.getReplies(id).subscribe(
       replies => this.replies = replies
     );
-  }
-
-  getNumLikes() {
-    this.msgService.getNumLikes(this.message.mid).subscribe(likes => {
-      this.likesnum = likes;
-    });
-  }
-
-  getNumDislikes() {
-    this.msgService.getNumDislikes(this.message.mid).subscribe(dislikes => {
-      this.dislikesnum = dislikes;
-    });
   }
 
   getLikes() {
@@ -72,19 +53,6 @@ export class MessageDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
-  }
-
-  selectionChanged(value: any) {
-    if(value == "like"){
-      if(this.modified)
-        this.dislikesnum--;
-      this.likesnum++;
-    }else{
-      if(this.modified)
-        this.likesnum--;
-      this.dislikesnum++;
-    }
-    this.modified = true;
   }
 
 }

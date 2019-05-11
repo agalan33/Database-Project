@@ -8,11 +8,14 @@ import { ChatComponent } from './chat/chat.component';
 import { AllChatsComponent} from './all-chats/all-chats.component';
 import { MessageDetailComponent } from './message-detail/message-detail.component';
 import { MessageDetailResolverService } from './message-detail-resolver.service';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {ProfileComponent} from './profile/profile.component';
 
 const routes: Routes = [
-  {path: 'chat', component: ChatComponent},
+  {path: 'my-profile', component: ProfileComponent},
+  {path: 'users/:uid/chats/:cid', component: ChatComponent},
   {
-    path: 'chat/messages/:mid',
+    path: 'users/:uid/chats/:cid/messages/:mid',
     component: MessageDetailComponent,
     resolve: {
       message: MessageDetailResolverService
@@ -22,6 +25,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'create_account', component: CreateAccountComponent},
   {path: 'contact-list', component: ContactListComponent},
+  {path: 'dashboard', component: DashboardComponent},
   {path: 'all-chats', component: AllChatsComponent}
 ];
 

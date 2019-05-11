@@ -1,0 +1,39 @@
+<div fxLayoutAlign="flex-start">
+  <div>
+    <mat-card-header><h1>Members of chat</h1></mat-card-header>
+  </div>
+  <span class="fill-space"></span>
+  <div class="add-contact">
+    <button mat-button (click)="openDialog()">
+      <i class="material-icons add-contact">add_circle_outline</i>
+    </button>
+  </div>
+</div>
+<mat-table [dataSource]='members' *ngIf="members.length != 0">
+  <ng-container matColumnDef="ufirst_name">
+    <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+    <mat-cell *matCellDef="let contact"> {{contact.ufirst_name}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="ulast_name">
+    <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+    <mat-cell *matCellDef="let contact"> {{contact.ulast_name}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="username">
+    <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
+    <mat-cell *matCellDef="let contact"> {{contact.username}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="uphone">
+    <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
+    <mat-cell *matCellDef="let contact"> {{contact.uphone}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="uemail">
+    <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+    <mat-cell *matCellDef="let contact"> {{contact.uemail}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="delete">
+    <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+    <mat-cell *matCellDef="let contact" (click)="removeMember(contact.contactid)"><button mat-button class="add-contact"><i class="material-icons add-contact">delete_forever</i></button> </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="headers"></mat-header-row>
+  <mat-row *matRowDef="let contact; columns: headers"></mat-row>
+</mat-table>

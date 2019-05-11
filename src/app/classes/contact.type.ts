@@ -5,4 +5,5 @@ export interface Contact {
   uemail: string;
   uphone: string;
   uage: string;
+  contactid: number;
 }
