@@ -4,6 +4,7 @@ import {PostsPerDay} from '../classes/PostsPerDay';
 import {TrendingHash} from '../classes/TrendingHash';
 import {NavBarService} from '../nav-bar/nav-bar.service';
 import {User} from '../classes/user.type';
+import {MostActiverUsers} from '../classes/MostActiverUsers';
 
 
 @Component({
@@ -20,13 +21,11 @@ export class DashboardComponent implements OnInit {
   private dislikesperdayURL = 'http://127.0.0.1:5000/DbProject/dailyDislikes';
   private trendingHashURL = 'http://127.0.0.1:5000/DbProject/hashtags/trending';
   private postsperdayfromuserURL = 'http://127.0.0.1:5000/DbProject/messages/users/';
-
+  private mostactiveusersURL = 'http://127.0.0.1:5000/DbProject/users/mostActive';
   title3 = 'Trending Hashtags';
   type3 = 'Table';
   trending = [];
   columnNames3 = ['Position', 'Hashtag', 'Times used'];
-
-
 
 
   title = 'Replies per day';
@@ -57,6 +56,9 @@ export class DashboardComponent implements OnInit {
   postsperdayfromuser = [];
   columnNames6 = ['Date', 'Number of posts'];
 
+  title7 = 'Most active users per day';
+  mostactiverusers = [];
+  columnNames7 = ['Date', 'Username', 'Number of posts'];
   constructor(private httpClient: HttpClient, private navBarService: NavBarService) { }
 
   ngOnInit() {
@@ -73,6 +75,7 @@ export class DashboardComponent implements OnInit {
         });
       }
     });
+    this.getMostActiveUsers();
     this.getTrendingHash();
     this.getPostsPerDay();
     this.getRepliesPerDay();
@@ -86,6 +89,15 @@ export class DashboardComponent implements OnInit {
       });
     });
   }
+
+  getMostActiveUsers() {
+    this.httpClient.get<MostActiverUsers[]>(this.mostactiveusersURL).subscribe((data: MostActiverUsers[]) => {
+      data.forEach(elem => {
+        this.mostactiverusers.push([elem.date, elem.username, elem.count]);
+      });
+    });
+  }
+
 
   getPostsPerDay() {
     this.httpClient.get<PostsPerDay[]>(this.postsperdayURL).subscribe((data: PostsPerDay[]) => {
