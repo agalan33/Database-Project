@@ -5,20 +5,36 @@
   </mat-form-field>
   <br>
   <mat-form-field fxLayoutAlign="center">
-    <input #password matInput placeholder="password">
+    <input #password type="password" matInput placeholder="password">
   </mat-form-field>
   <br>
   <mat-form-field fxLayoutAlign="center">
-    <input #confirm matInput placeholder="confirm password">
+    <input #confirm type="password" matInput placeholder="confirm password">
   </mat-form-field>
   <br>
   <mat-form-field fxLayoutAlign="center">
     <input #username matInput placeholder="username">
   </mat-form-field>
   <br>
+  <mat-form-field fxLayoutAlign="center">
+    <input #fname matInput placeholder="first name">
+  </mat-form-field>
+  <br>
+  <mat-form-field fxLayoutAlign="center">
+    <input #lname matInput placeholder="last name">
+  </mat-form-field>
+  <mat-form-field fxLayoutAlign="center">
+    <input #pnumber matInput placeholder="phone number">
+  </mat-form-field>
+  <br>
+  <mat-form-field fxLayoutAlign="center">
+    <input #age matInput placeholder="age">
+  </mat-form-field>
+  <br>
+  <br>
   <br>
   <div fxLayoutAlign="center">
-      <button mat-button name="button">Sign Up</button>
+      <button mat-button name="button" (click)="create_account(fname.value, lname.value, email.value, password.value, confirm.value, username.value, pnumber.value, age.value)">Sign Up</button>
   </div>
   <br>
   <br>

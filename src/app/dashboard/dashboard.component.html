@@ -1,0 +1,84 @@
+
+<h2>Dashboard:</h2>
+<div gdAlignColumns="space-evenly">
+<div class="container" fxLayoutAlign="center">
+  <google-chart id="Postsperdayfromuser"
+                [title]="title6"
+                [type]="line"
+                [data]="postsperdayfromuser"
+                [columnNames]="columnNames6"
+                [options]="options2"
+                [width]="width2"
+                [height]="height2">
+  </google-chart>
+</div>
+
+<div class="container" fxLayout="row" fxLayoutAlign="space-evenly">
+  <google-chart id="TrendingHash"
+                [title]="title3"
+                [type]="type3"
+                [data]="trending"
+                [columnNames]="columnNames3"
+                [options]="options2"
+                [width]="width2"
+                [height]="height2">
+  </google-chart>
+
+
+  <google-chart id="MostActiveUsers"
+                [title]="title7"
+                [type]="type3"
+                [data]="mostactiverusers"
+                [columnNames]="columnNames7"
+                [options]="options2"
+                [width]="width2"
+                [height]="height2">
+  </google-chart>
+</div>
+
+  <div class="container" fxLayout="row" fxLayoutAlign="space-evenly">
+  <google-chart id="Postsperday"
+    [title]="title2"
+    [type]="line"
+    [data]="postsperday"
+    [columnNames]="columnNames2"
+    [options]="options2"
+    [width]="width2"
+    [height]="height2">
+  </google-chart>
+
+  <google-chart id="Repliesperday"
+    [title]="title"
+    [type]="line"
+    [data]="repliesperday"
+    [columnNames]="columnNames"
+    [options]="options2"
+    [width]="width2"
+    [height]="height2">
+  </google-chart>
+  </div>
+
+
+<div class="container" fxLayout="row" fxLayoutAlign="space-evenly">
+  <google-chart id="Likessperday"
+                [title]="title4"
+                [type]="line"
+                [data]="likesperday"
+                [columnNames]="columnNames4"
+                [options]="options2"
+                [width]="width2"
+                [height]="height2">
+  </google-chart>
+
+  <google-chart id="Dislikesperday"
+                [title]="title5"
+                [type]="line"
+                [data]="dislikesperday"
+                [columnNames]="columnNames5"
+                [options]="options2"
+                [width]="width2"
+                [height]="height2">
+  </google-chart>
+</div>
+</div>
+

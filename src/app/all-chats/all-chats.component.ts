@@ -4,6 +4,9 @@ import { Chats } from '../classes/chats.type';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog, MatTable} from '@angular/material';
 import {AddChatComponent} from '../add-chat/add-chat.component';
+import {Contact} from '../classes/contact.type';
+import {NavBarService} from '../nav-bar/nav-bar.service';
+import {User} from '../classes/user.type';
 
 @Component({
   selector: 'app-all-chats',
@@ -12,20 +15,29 @@ import {AddChatComponent} from '../add-chat/add-chat.component';
 })
 export class AllChatsComponent implements OnInit {
   public chats = [];
-  public chatsURL = 'http://127.0.0.1:5000/DbProject/users/1/chats';
+  public usr: User;
+  public chatsURL = 'http://127.0.0.1:5000/DbProject/users/';
   public headers = ['cname'];
   public pURL = '/chat';
   public cURL = '';
   public uid: number;
   @ViewChild(MatTable) table: MatTable<any>;
 
-  constructor(private httpClient: HttpClient, private router: Router, private route: ActivatedRoute, private dialog: MatDialog) { }
+  constructor(private httpClient: HttpClient, private router: Router,
+              private route: ActivatedRoute, private dialog: MatDialog, private navBarService: NavBarService) { }
 
   ngOnInit() {
     this.uid = + this.route.snapshot.paramMap.get('uid');
-    console.log(this.uid);
-    this.httpClient.get<Chats[]>(this.chatsURL).subscribe(data => {
-      this.chats = data;
+    this.navBarService.isLogged();
+    this.navBarService.changeLogin.subscribe(data => {
+      if (data) {
+        this.usr = this.navBarService.getCurrentUser();
+        const url = this.chatsURL.concat(String(this.usr.uid));
+        const finishedURL = url.concat('/chats');
+        this.httpClient.get<Chats[]>(finishedURL).subscribe(chat => {
+          this.chats = chat;
+        });
+      }
     });
   }
 

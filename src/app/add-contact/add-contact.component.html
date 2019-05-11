@@ -1,27 +1,30 @@
 <h2 mat-dialog-title>Add Contact</h2>
 <mat-form-field>
-  <input #searchContact matInput placeholder="search">
+  <input #searchAll matInput placeholder="search">
 </mat-form-field>
-<mat-table [dataSource]='contacts' *ngIf="contacts.length != 0">
+<button mat-button (click)="searchUser(searchAll.value)">
+  <i class="material-icons add-contact">
+    search
+  </i>
+</button>
+<mat-table [dataSource]='users' *ngIf="users.length != 0">
   <ng-container matColumnDef="ufirst_name">
     <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
-    <mat-cell id="result cell title" *matCellDef="let contact"> {{contact.ufirst_name}} </mat-cell>
+    <mat-cell id="result cell title" *matCellDef="let user"> {{user.ufirst_name}} </mat-cell>
   </ng-container>
   <ng-container matColumnDef="ulast_name">
     <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
-    <mat-cell id="result cell artist" *matCellDef="let contact"> {{contact.ulast_name}} </mat-cell>
+    <mat-cell id="result cell artist" *matCellDef="let user"> {{user.ulast_name}} </mat-cell>
   </ng-container>
   <ng-container matColumnDef="uphone">
     <mat-header-cell *matHeaderCellDef> Phone </mat-header-cell>
-    <mat-cell *matCellDef="let contact"> {{contact.uphone}} </mat-cell>
+    <mat-cell *matCellDef="let user"> {{user.uphone}} </mat-cell>
   </ng-container>
   <ng-container matColumnDef="uemail">
     <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-    <mat-cell *matCellDef="let contact"> {{contact.uemail}} </mat-cell>
+    <mat-cell *matCellDef="let user"> {{user.uemail}} </mat-cell>
   </ng-container>
   <mat-header-row *matHeaderRowDef="headers"></mat-header-row>
-  <mat-row *matRowDef="let contact; columns: headers"></mat-row>
+  <mat-row *matRowDef="let user; columns: headers" (click)="addContact(user.uid)"></mat-row>
 </mat-table>
-<button mat-button (click)="closeDialog()">
-  Cancel
-</button>
+

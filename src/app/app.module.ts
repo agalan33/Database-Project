@@ -9,7 +9,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material';
+import {MatNativeDateModule, MatSnackBarModule} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ContactListComponent } from './contact-list/contact-list.component';
 import { HomeComponent } from './home/home.component';
@@ -20,6 +20,11 @@ import { RepliesComponent } from './replies/replies.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AllChatsComponent } from './all-chats/all-chats.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { GoogleChartsModule } from 'angular-google-charts';
+import { ProfileComponent } from './profile/profile.component';
+import {NavBarService} from './nav-bar/nav-bar.service';
+import { EditUserComponent } from './edit-user/edit-user.component';
 import { AddChatComponent } from './add-chat/add-chat.component';
 
 @NgModule({
@@ -37,6 +42,11 @@ import { AddChatComponent } from './add-chat/add-chat.component';
     MessageDetailComponent,
     RepliesComponent,
     AllChatsComponent,
+    DashboardComponent,
+    AllChatsComponent,
+    ProfileComponent,
+    EditUserComponent,
+    AllChatsComponent,
     AddChatComponent
   ],
   imports: [
@@ -52,12 +62,15 @@ import { AddChatComponent } from './add-chat/add-chat.component';
     MatNativeDateModule,
     FlexLayoutModule,
     HttpClientModule,
+    GoogleChartsModule.forRoot(),
+    MatSnackBarModule
   ],
   entryComponents: [
     AddContactComponent,
+    EditUserComponent,
     AddChatComponent
   ],
-  providers: [],
+  providers: [NavBarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
