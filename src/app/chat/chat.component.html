@@ -16,9 +16,7 @@
           <form [formGroup]="messageForm" (ngSubmit)="onSend()">
             <mat-card-content>
               <div fxLayout="column">
-                <mat-form-field class="msg-img-link">
-                  <input matInput placeholder="Image link" formControlName="mimage">
-                </mat-form-field>
+                <input type="file" accept="image/*" name="image" (change)="onFileChange($event)">
                 <mat-form-field class="msg-text-box" appearance="outline">
                   <textarea matInput placeholder="Write a message..." formControlName="mtext"></textarea>
                 </mat-form-field>
