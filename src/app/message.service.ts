@@ -25,12 +25,14 @@ export class MessageService {
     return this.http.get<Message>('DbProject/users/1/chats/1/messages/' + id);
   }
 
-  sendMessage(uid: number, cid: number, message: NewMessage): Observable<Message> {
-    let httpParams = new HttpParams();
-    Object.keys(message).forEach(key => {
-      httpParams = httpParams.append(key, message[key]);
-    });
-    return this.http.post<Message>('DbProject/users/' + uid + '/chats/' + cid + '/messages', httpParams);
+  sendMessage(uid: number, cid: number, mtext: string, mimage: File): Observable<Message> {
+    const messageData = new FormData();
+    // Object.keys(message).forEach(key => {
+    //   httpParams = httpParams.append(key, message[key]);
+    // });
+    messageData.append('mimage', mimage, mimage.name);
+    messageData.append('mtext', mtext);
+    return this.http.post<Message>('DbProject/users/' + uid + '/chats/' + cid + '/messages', messageData);
   }
 
   sendReply(mid: number, uid: number, cid: number, reply: NewMessage): Observable<Message> {

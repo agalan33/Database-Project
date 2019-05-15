@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { Message } from '../classes/message';
 import { MessageService } from '../message.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -21,14 +21,16 @@ export class ChatComponent implements OnInit {
   private usr: User;
   private owner: User;
   messageForm = new FormGroup({
-    mimage: new FormControl(''),
+    mimage: new FormControl('', Validators.required),
     mtext: new FormControl('', Validators.required)
   });
   uid: number;
   cid: number;
 
 
-  constructor(private msgService: MessageService, private route: ActivatedRoute, private dialog: MatDialog, private router: Router, private navBarService: NavBarService, private httpClient: HttpClient, private snackBar: MatSnackBar) { }
+  constructor(private msgService: MessageService, private route: ActivatedRoute, private dialog: MatDialog, private router: Router,
+              private navBarService: NavBarService, private httpClient: HttpClient, private snackBar: MatSnackBar,
+              private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.cid = + this.route.snapshot.paramMap.get('cid');
@@ -51,9 +53,32 @@ export class ChatComponent implements OnInit {
     );
   }
 
+  onFileChange(event) {
+    this.messageForm.patchValue({
+             mimage: event.target.files[0]
+           });
+
+    // const reader = new FileReader();
+    //
+    // if (event.target.files && event.target.files.length) {
+    //   const [file] = event.target.files;
+    //   reader.readAsDataURL(file);
+    //
+    //   reader.onload = () => {
+    //     this.messageForm.patchValue({
+    //       mimage: reader.result
+    //     });
+    //
+    //     // need to run CD since file load runs outside of zone
+    //     this.cd.markForCheck();
+    //   };
+    // }
+  }
+
   onSend() {
-    const newMessage: NewMessage = this.messageForm.value;
-    this.msgService.sendMessage(this.uid, this.cid, newMessage).subscribe(msg => {
+    const mimage: File = this.messageForm.controls.mimage.value;
+    const mtext: string = this.messageForm.controls.mtext.value;
+    this.msgService.sendMessage(this.uid, this.cid, mtext, mimage).subscribe(msg => {
       msg.likes = 0;
       msg.dislikes = 0;
       console.log(msg);
@@ -71,7 +96,7 @@ export class ChatComponent implements OnInit {
     this.dialog.open(ManageMembersComponent, dialogConfig);
   }
   deleteChat() {
-    const chatID = this.router.url.charAt(this.router.url.length - 1);
+    const chatID = this.cid.toString();
     if (this.owner.uid === this.usr.uid) {
       const chatURL = 'http://127.0.0.1:5000/DbProject/users/';
       const url = chatURL.concat(String(this.usr.uid));
@@ -92,7 +117,7 @@ export class ChatComponent implements OnInit {
     }
   }
   getChatOwner() {
-    const chatID = this.router.url.charAt(this.router.url.length - 1);
+    const chatID = this.cid.toString();
     const chatURL = 'http://127.0.0.1:5000/DbProject/chats/';
     const finishedURL = chatURL.concat(String(chatID));
     this.httpClient.get<User>(finishedURL.concat('/owner')).subscribe( data => {
