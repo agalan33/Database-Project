@@ -96,7 +96,7 @@ export class ChatComponent implements OnInit {
     this.dialog.open(ManageMembersComponent, dialogConfig);
   }
   deleteChat() {
-    const chatID = this.router.url.charAt(this.router.url.length - 1);
+    const chatID = this.cid.toString();
     if (this.owner.uid === this.usr.uid) {
       const chatURL = 'http://127.0.0.1:5000/DbProject/users/';
       const url = chatURL.concat(String(this.usr.uid));
@@ -117,7 +117,7 @@ export class ChatComponent implements OnInit {
     }
   }
   getChatOwner() {
-    const chatID = this.router.url.charAt(this.router.url.length - 1);
+    const chatID = this.cid.toString();
     const chatURL = 'http://127.0.0.1:5000/DbProject/chats/';
     const finishedURL = chatURL.concat(String(chatID));
     this.httpClient.get<User>(finishedURL.concat('/owner')).subscribe( data => {
